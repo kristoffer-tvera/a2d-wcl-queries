@@ -1,0 +1,29 @@
+﻿@page "{id}"
+@model WarcraftLogsQueries.Pages.Report.IndexModel
+@{
+    ViewData["Title"] = "Report";
+}
+
+@if (Model.Report != null)
+{
+    <ul class="collection">
+        @foreach (var fight in Model.Report.Fights)
+        {
+            var css = fight.Kill ? "fight--kill" : "fight--wipe";
+            <li class="collection-item @css">
+                @fight.Name
+                <div class="row" data-event data-fight-code="jnAH2aYQw38PRrv4" data-filter-expression="ability.id=330376" data-start-time="@fight.StartTime" data-end-time="@fight.EndTime">
+                    <div class="progress">
+                        <div class="indeterminate"></div>
+                    </div>
+                </div>
+            </li>
+        }
+    </ul>
+}
+
+@section Scripts{
+    <script>
+        var players = @Html.Raw(System.Text.Json.JsonSerializer.Serialize(Model.Report.MasterData.Actors));
+    </script>
+}

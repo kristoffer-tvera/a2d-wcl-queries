@@ -1,0 +1,72 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - WarcraftLogsQueries</title>
+
+    <!--Import Google Icon Font-->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+    <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/WarcraftLogsQueries.styles.css" asp-append-version="true" />
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="nav-wrapper container">
+                <a href="/" class="brand-logo">Home</a>
+                <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+                <ul id="nav-mobile" class="right hide-on-med-and-down">
+                    <li><a href="https://amusedtodeath.eu/" target="_blank">Amused to Death</a></li>
+                    <li><a href="https://www.warcraftlogs.com/" target="_blank">WarcraftLogs</a></li>
+                </ul>
+            </div>
+        </nav>
+
+        <ul class="sidenav" id="mobile-demo">
+            <li><a href="/">Home</a></li>
+            <li><a href="https://amusedtodeath.eu/" target="_blank">Amused to Death</a></li>
+            <li><a href="https://www.warcraftlogs.com/" target="_blank">WarcraftLogs</a></li>
+            <li><a class="sidenav-close" href="#!">Close</a></li>
+        </ul>
+    </header>
+    <main class="container">
+        @RenderBody()
+    </main>
+    <footer class="page-footer">
+        <div class="container">
+            <div class="row">
+                <div class="col l6 s12">
+                    <h5 class="white-text">Hi there</h5>
+                    <p class="grey-text text-lighten-4">This site was inspired by people who use a trinket that sims REALLY high.</p>
+                </div>
+                <div class="col l4 offset-l2 s12">
+                    <h5 class="white-text">Amused to Death</h5>
+                    <ul>
+                        <li><a class="grey-text text-lighten-3" href="https://www.warcraftlogs.com/guild/calendar/294/" target="_blank">WarcraftLogs</a></li>
+                        <li><a class="grey-text text-lighten-3" href="https://www.wowprogress.com/guild/eu/stormscale/Amused+to+Death" target="_blank">WoWProgress</a></li>
+                        <li><a class="grey-text text-lighten-3" href="https://raider.io/guilds/eu/stormscale/Amused%20to%20Death" target="_blank">RAIDER.IO</a></li>
+                        <li><a class="grey-text text-lighten-3" href="https://amusedtodeath.eu/" target="_blank">Apply to join</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="footer-copyright">
+            <div class="container">
+                © @(DateTime.UtcNow.Year) Copyright A2D
+                <a class="grey-text text-lighten-4 right" asp-area="" asp-page="/Privacy">Privacy</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

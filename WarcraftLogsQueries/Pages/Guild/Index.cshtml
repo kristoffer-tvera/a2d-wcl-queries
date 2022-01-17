@@ -1,0 +1,48 @@
+﻿@page "{id}"
+@model WarcraftLogsQueries.Pages.Guild.IndexModel
+@{
+}
+
+<div class="row">
+    @foreach (var report in Model.Reports.Data.Where(r => r.Fights.Count > 0))
+    {
+        <div class="col l4 m6 s12">
+            <div class="card darken-1">
+                <div class="card-content">
+                    <span class="card-title">@report.Title (by @report.Owner.Name)</span>
+                    <p>
+                        Report start: @(DateTimeOffset.FromUnixTimeMilliseconds(report.StartTime).UtcDateTime)
+                    </p>
+                    <p>
+                        Report end: @(DateTimeOffset.FromUnixTimeMilliseconds(report.EndTime).UtcDateTime)
+                    </p>
+
+                    <hr>
+                    @foreach (var fight in report.Fights)
+                    {
+                        var css = fight.Kill ? "fight--kill" : "fight--wipe";
+                        var encounterPercentage = fight.Kill ? "" : $"({fight.FightPercentage} %)";
+
+                        <p class="@css">
+                            @fight.Name @encounterPercentage
+                        </p>
+                    }
+
+                </div>
+                <div class="card-action">
+                    <a asp-page="/Report/Index" asp-route-id="@report.Code">View this report</a>
+                </div>
+            </div>
+        </div>
+    }
+</div>
+
+<ul class="pagination center">
+    <li class="@(Model.PageNumber >= 1 ? "disabled" : "waves-effect")"><a href="#!"><i class="material-icons">chevron_left</i></a></li>
+    @foreach (var pageNumber in Model.Pages)
+    {
+        var css = Model.PageNumber == pageNumber ? "active" : "waves-effect";
+        <li class="@css"><a asp-page="/Guild/Index" asp-route-id="@Model.GuildId" asp-route-pageNumber="@pageNumber">@pageNumber</a></li>
+    }
+    <li class="@(Model.PageNumber <= Model.Reports.LastPage ? "disabled" : "waves-effect")"><a href="#!"><i class="material-icons">chevron_right</i></a></li>
+</ul>
