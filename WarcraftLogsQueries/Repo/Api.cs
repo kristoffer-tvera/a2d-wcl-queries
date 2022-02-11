@@ -177,7 +177,7 @@ query ReportMetaData($fightCode: String, $actorFilter: String) {
 					subType
 				}
 			}
-			fights {
+			fights(killType: Encounters) {
 				name
 				kill
 				fightPercentage

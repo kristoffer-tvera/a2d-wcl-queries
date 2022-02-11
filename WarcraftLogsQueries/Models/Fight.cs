@@ -8,10 +8,10 @@ namespace WarcraftLogsQueries.Models
         public string? Name { get; set; }
 
         [JsonPropertyName("kill")]
-        public bool Kill { get; set; }
+        public bool? Kill { get; set; }
 
         [JsonPropertyName("fightPercentage")]
-        public double FightPercentage { get; set; }
+        public double? FightPercentage { get; set; }
 
         [JsonPropertyName("startTime")]
         public int StartTime { get; set; }

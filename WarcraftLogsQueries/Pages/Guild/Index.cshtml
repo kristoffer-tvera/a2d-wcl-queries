@@ -20,8 +20,8 @@
                     <hr>
                     @foreach (var fight in report.Fights)
                     {
-                        var css = fight.Kill ? "fight--kill" : "fight--wipe";
-                        var encounterPercentage = fight.Kill ? "" : $"({fight.FightPercentage} %)";
+                        var css = fight.Kill.GetValueOrDefault() ? "fight--kill" : "fight--wipe";
+                        var encounterPercentage = fight.Kill.GetValueOrDefault() ? "" : $"({fight.FightPercentage.GetValueOrDefault()} %)";
 
                         <p class="@css">
                             @fight.Name @encounterPercentage
